@@ -3,6 +3,7 @@ version: 2.1
 
 orbs:
   release-management: salesforce/npm-release-management@4
+  aws-cli: circleci/aws-cli@2
 
 jobs:
   lint: &lint
@@ -50,6 +51,7 @@ jobs:
     environment:
       NYC: "yarn exec nyc -- --nycrc-path node_modules/@oclif/nyc-config/.nycrc"
     steps:
+      - aws-cli/install
       - checkout
       - restore_cache: &restore_cache
           keys:
