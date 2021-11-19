@@ -59,9 +59,10 @@ jobs:
       - run: yarn
       - run: .circleci/loadgpg
       - run: yarn add -D nyc@13 @oclif/nyc-config@1
-      - run: ./node_modules/.bin/tsc
+      - run: yarn build
       - run: ./bin/run --version
       - run: ./bin/run --help
+      - run: yarn devcli
 
   cache:
     <<: *lint
